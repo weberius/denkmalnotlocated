@@ -42,7 +42,7 @@ public class Service {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String setDenkmalInError(String denkmalAsJsonString) {
-		response.setCharacterEncoding("UTF-8");
+		// response.setCharacterEncoding("UTF-8");
 		Gson gson = new Gson();
 		Denkmal denkmal = gson.fromJson(denkmalAsJsonString,
 				new Denkmal().getClass());
