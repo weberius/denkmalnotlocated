@@ -18,7 +18,7 @@ import org.apache.log4j.Logger;
 
 import com.google.gson.Gson;
 
-@Path("/service")
+@Path("/")
 public class Service {
 
 	private final static Logger logger = Logger.getLogger(Service.class);
