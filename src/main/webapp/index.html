@@ -3,8 +3,13 @@
 <title>Liste der nicht georeferenzierten Denkm&auml;ler</title>
 <script src="angularjs/1.3.14/angular.min.js"></script>
 <style>
+h1 {
+	font: 18px/24px Arial, Helvetica, sans-serif;
+}
+
 table, th, td {
-	border: 1px solid grey;
+    font: 10px/14px Arial, Helvetica, sans-serif;
+	border: 1px solid white;
 	border-collapse: collapse;
 	padding: 5px;
 }
@@ -20,22 +25,20 @@ table tr:nth-child(even) {
 </head>
 <body>
 	<h1>Liste der nicht georeferenzierten Denkm&auml;ler</h1>
-	<div ng-app="myApp" ng-controller="customersCtrl">
+	<div ng-app="denkmalApp" ng-controller="denkmalCtrl">
 
 		<table>
 			<tr>
-				<td></td>
-				<td>Denkmalnummer</td>
-				<td>PLZ</td>
-				<td>Ort</td>
-				<td>Strasse</td>
-				<td>Unter Schutz</td>
-				<td>Baujahr</td>
-				<td>Baujahr Zusatz</td>
-				<td>Kurzbezeichnung</td>
+				<th>Denkmal- nummer</th>
+				<th>PLZ</th>
+				<th>Ort</th>
+				<th>Strasse</th>
+				<th>Unter Schutz</th>
+				<th>Baujahr</th>
+				<th>Baujahr Zusatz</th>
+				<th>Kurzbezeichnung</th>
 			</tr>
 			<tr ng-repeat="denkmal in denkmallist">
-				<td>{{ $index + 1 }}</td>
 				<td>{{ denkmal.denkmalnummer }}</td>
 				<td>{{ denkmal.plz }}</td>
 				<td>{{ denkmal.ort }}</td>
@@ -50,9 +53,10 @@ table tr:nth-child(even) {
 	</div>
 
 	<script>
-		var app = angular.module('myApp', []);
-		app.controller('customersCtrl', function($scope, $http) {
-			$http.get("/denkmalnotlocated/service/notlocated?res").success(
+		var app = angular.module('denkmalApp', []);
+		app.controller('denkmalCtrl', function($scope, $http) {
+			$http.get("/denkmalnotlocated/service/notlocated?res")
+				.success(
 					function(response) {
 						$scope.denkmallist = response;
 					});
